@@ -1,0 +1,56 @@
+@import 'colors';
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+%position-center {
+    position: absolute;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+body {
+    background: $black;
+}
+
+@keyframes logoEnter {
+    0% {opacity: 0;}
+    5% {opacity: 0;transform: scale(1);}
+    15% {transform: scale(0.2); opacity: 1;}
+    50% {transform: scale(0.2); opacity: 1;}
+    60% {transform: scale(0); opacity: 0;}
+    100% {transform: scale(0); opacity: 0;}
+}
+@keyframes textEnter {
+    50% {opacity: 0;transform: scale(10);}
+    60% {transform: scale(1); opacity: 1;}
+    90% {transform: scale(1); opacity: 1;}
+    100% {transform: scale(0); opacity: 0;}
+}
+
+.ae-logo__front {
+    height: 100vh;
+    @extend %flex-center;
+    position: relative;
+
+    &--enter {
+        @extend %position-center;
+        animation: logoEnter 6s forwards;
+    }
+
+    &--text {
+        @extend %position-center;
+        font-size: 60px;
+        opacity: 0;
+        color: white;
+        animation: textEnter 6s forwards;
+    }
+}
