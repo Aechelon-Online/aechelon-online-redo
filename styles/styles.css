@@ -1,4 +1,4 @@
-.ae-logo__front {
+.ae-logo__front, .navbar, .navbar__front, .navbar__front--img, .navbar__front--links, .container .intro, .container .intro__greeting, .container .about, .container .about__greeting, .container .portfolio, .container .portfolio__greeting, .container .contact, .container .contact__greeting {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,7 +10,7 @@
           align-items: center;
 }
 
-.ae-logo__front--enter, .ae-logo__front--text {
+.ae-logo__front--enter, .ae-logo__front--text, .container .intro__logo-img, .container .about__headshot-img, .container .portfolio__design-img, .container .contact__handshake-img {
   position: absolute;
 }
 
@@ -24,6 +24,7 @@
 
 body {
   background: #000;
+  height: 100vh;
 }
 
 @-webkit-keyframes logoEnter {
@@ -36,13 +37,13 @@ body {
             transform: scale(1);
   }
   15% {
-    -webkit-transform: scale(0.2);
-            transform: scale(0.2);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
     opacity: 1;
   }
   50% {
-    -webkit-transform: scale(0.2);
-            transform: scale(0.2);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
     opacity: 1;
   }
   60% {
@@ -67,13 +68,13 @@ body {
             transform: scale(1);
   }
   15% {
-    -webkit-transform: scale(0.2);
-            transform: scale(0.2);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
     opacity: 1;
   }
   50% {
-    -webkit-transform: scale(0.2);
-            transform: scale(0.2);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
     opacity: 1;
   }
   60% {
@@ -134,21 +135,215 @@ body {
   }
 }
 
+@-webkit-keyframes logoPageClose {
+  90% {
+    display: -webkit-box;
+    display: flex;
+    height: 100vh;
+  }
+  100% {
+    display: none;
+    height: 0;
+  }
+}
+
+@keyframes logoPageClose {
+  90% {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100vh;
+  }
+  100% {
+    display: none;
+    height: 0;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  92% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  92% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .ae-logo__front {
-  height: 100vh;
   position: relative;
+  -webkit-animation: logoPageClose 8s cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
+          animation: logoPageClose 8s cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
 }
 
 .ae-logo__front--enter {
   -webkit-animation: logoEnter 6s forwards;
           animation: logoEnter 6s forwards;
+  width: clamp(250px, 150vw, 1000px);
 }
 
 .ae-logo__front--text {
-  font-size: 60px;
+  font-size: 8vw;
   opacity: 0;
   color: white;
   -webkit-animation: textEnter 6s forwards;
           animation: textEnter 6s forwards;
+}
+
+.navbar {
+  position: relative;
+  height: 15vh;
+  z-index: 10;
+  -webkit-animation: fadeIn 8s ease-in forwards;
+          animation: fadeIn 8s ease-in forwards;
+}
+
+.navbar__front {
+  background: -webkit-gradient(linear, left top, left bottom, from(black), to(transparent));
+  background: linear-gradient(black 0%, transparent 100%);
+  position: fixed;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navbar__front--img {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-left: 5vw;
+  width: 100%;
+}
+
+.navbar__front--img-logo {
+  width: clamp(6vh, 15vw, 14vh);
+}
+
+.navbar__front--links {
+  margin-right: 3vw;
+  color: white;
+  font-size: clamp(1rem, 4vw, 2rem);
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.navbar__front--links li {
+  margin: 0 clamp(10px, 2vw, 20px);
+  font-family: 'Source Code Pro';
+}
+
+.navbar__front--links li:hover {
+  color: aqua;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.container .intro {
+  background: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(50%, rgba(171, 80, 0, 0.708)), to(black));
+  background: linear-gradient(black 0%, rgba(171, 80, 0, 0.708) 50%, black 100%);
+  position: relative;
+  width: 100%;
+  height: 85%;
+  opacity: 0.5;
+  -webkit-animation: fadeIn 8.5s ease-in forwards;
+          animation: fadeIn 8.5s ease-in forwards;
+}
+
+.container .intro__logo-img {
+  opacity: 0.5;
+  width: clamp(250px, 100vw, 600px);
+}
+
+.container .intro__greeting {
+  color: white;
+  font-size: 40px;
+  -webkit-animation: fadeIn 9s ease-in forwards;
+          animation: fadeIn 9s ease-in forwards;
+}
+
+.container .about {
+  background: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(50%, rgba(0, 63, 171, 0.708)), to(black));
+  background: linear-gradient(black 0%, rgba(0, 63, 171, 0.708) 50%, black 100%);
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.container .about__headshot-img {
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.5;
+  z-index: -1;
+  height: clamp(400px, 120vw, 1200px);
+}
+
+.container .about__greeting {
+  color: white;
+  font-size: 40px;
+}
+
+.container .portfolio {
+  background: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(50%, rgba(171, 157, 0, 0.708)), to(black));
+  background: linear-gradient(black 0%, rgba(171, 157, 0, 0.708) 50%, black 100%);
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.container .portfolio__design-img {
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.5;
+  z-index: -1;
+  width: 100%;
+}
+
+.container .portfolio__greeting {
+  color: white;
+  font-size: 40px;
+}
+
+.container .contact {
+  background: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(50%, rgba(0, 160, 171, 0.708)), to(black));
+  background: linear-gradient(black 0%, rgba(0, 160, 171, 0.708) 50%, black 100%);
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.container .contact__handshake-img {
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.5;
+  z-index: -1;
+  width: 100%;
+}
+
+.container .contact__greeting {
+  color: white;
+  font-size: 40px;
 }
 /*# sourceMappingURL=styles.css.map */
