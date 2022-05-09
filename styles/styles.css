@@ -389,11 +389,18 @@ body {
   line-height: 6vw;
   color: white;
   width: 80vw;
-  max-width: 615px;
+  max-width: 590px;
   font-size: clamp(14px, 4vw, 28px);
   text-align: center;
   -webkit-animation: fadeRight 9s ease-in-out forwards;
           animation: fadeRight 9s ease-in-out forwards;
+}
+
+@media screen and (min-width: 750px) {
+  .container .intro__greeting-2 {
+    line-height: 46px;
+    max-width: 590px;
+  }
 }
 
 .container .about {

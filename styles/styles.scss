@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'media-queries';
 
 %flex-center {
     display: flex;
@@ -191,10 +192,15 @@ body {
                 line-height: 6vw;
                 color: white;
                 width: 80vw;
-                max-width: 615px;
+                max-width: 590px;
                 font-size: clamp(14px, 4vw, 28px);
                 text-align: center;
                 animation: fadeRight 9s ease-in-out forwards;
+
+                @include tablet {
+                    line-height: 46px;
+                    max-width: 590px;
+                }
             }
         
         }
