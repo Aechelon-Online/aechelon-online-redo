@@ -5,6 +5,12 @@
     justify-content: center;
     align-items: center;
 }
+%flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 %position-center {
     position: absolute;
 }
@@ -51,6 +57,20 @@ body {
     100% {opacity: 1;}
 }
 
+@keyframes fadeLeft {
+    0% {opacity: 0;}
+    70% {opacity: 0; transform: translateX(-50vw);}
+    90% {opacity: 0;}
+    100% {opacity: 1; transform: translateX(0vw);}
+}
+
+@keyframes fadeRight {
+    0% {opacity: 0;}
+    70% {opacity: 0; transform: translateX(50vw);}
+    90% {opacity: 0;}
+    100% {opacity: 1; transform: translateX(0vw);}
+}
+
 .ae-logo__front {
     @extend %flex-center;
     position: relative;
@@ -80,30 +100,39 @@ body {
 
     &__front {
         @extend %flex-center;
-        background: linear-gradient(black 0%, transparent 100%);
+        background: linear-gradient(from top, black 0%, transparent 100%);
         position: fixed;
         height: 15vh;
         width: 100%;
         justify-content: space-between;
 
+        &--brand {
+            @extend %flex-center;
+        }
+
 
         &--img {
             @extend %flex-center;
             justify-content: flex-start;
-            margin-left: 5vw;
-            width: 100%;
+            margin-left: 2vw;
 
             &-logo {
                 width: clamp(6vh, 15vw, 14vh);
             }
         }
 
+        &--title {
+            color: white;
+            width: 100%;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
 
         &--links {
             @extend %flex-center;
-            margin-right: 3vw;
+            margin-right: 2vw;
             color: white;
-            font-size: clamp(1rem, 4vw, 2rem);
+            font-size: clamp(1rem, 3vw, 2rem);
             text-decoration: none;
             list-style-type: none;
 
@@ -132,7 +161,7 @@ body {
         position: relative;
         @extend %flex-center;
         width: 100%;
-        height: 100%;
+        height: 85%;
         opacity: 0.5;
         animation: fadeIn 8.5s ease-in forwards;
 
@@ -143,11 +172,31 @@ body {
             width: clamp(250px, 100vw, 600px);
         }
 
+        &__paragraph {
+            @extend %flex-column;
+        }
+
         &__greeting {
             @extend %flex-center;
+            font-family: 'Roboto';
+            margin: 1vw;
             color: white;
-            font-size: 40px;
-            animation: fadeIn 9s ease-in forwards;
+            font-size: clamp(26px, 8vw, 56px);
+            animation: fadeLeft 9s ease-in-out forwards;
+        
+            &-2 {
+                @extend %flex-center;
+                font-family: 'Roboto';
+                // margin: 1vw;
+                line-height: 6vw;
+                color: white;
+                width: 80vw;
+                max-width: 615px;
+                font-size: clamp(14px, 4vw, 28px);
+                text-align: center;
+                animation: fadeRight 9s ease-in-out forwards;
+            }
+        
         }
     }
 
@@ -200,7 +249,6 @@ body {
         background: linear-gradient(black 0%, rgba(0, 160, 171, 0.708) 50%, black 100%);
         position: relative;
         @extend %flex-center;
-        // width: 100%;
         overflow: hidden;
         height: 100vh;
 
