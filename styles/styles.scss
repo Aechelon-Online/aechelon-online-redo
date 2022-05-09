@@ -276,3 +276,12 @@ body {
 
     }
 }
+
+.titles {
+    transition: 300ms;
+    opacity: 0;
+}
+
+.titles.show {
+    opacity: 1;
+}

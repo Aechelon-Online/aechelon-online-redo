@@ -463,4 +463,14 @@ body {
   color: white;
   font-size: 40px;
 }
+
+.titles {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  opacity: 0;
+}
+
+.titles.show {
+  opacity: 1;
+}
 /*# sourceMappingURL=styles.css.map */
