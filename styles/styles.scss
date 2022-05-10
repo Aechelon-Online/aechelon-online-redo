@@ -58,10 +58,22 @@ body {
     100% {opacity: 1;}
 }
 
+@keyframes fadeInMain {
+    0% {opacity: 0;}
+    // 92% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
 @keyframes fadeLeft {
     0% {opacity: 0;}
     70% {opacity: 0; transform: translateX(-50vw);}
     90% {opacity: 0;}
+    100% {opacity: 1; transform: translateX(0vw);}
+}
+
+@keyframes fadeLeftMain {
+    0% {opacity: 0; transform: translateX(-50vw);}
+    50% {opacity: 0;}
     100% {opacity: 1; transform: translateX(0vw);}
 }
 
@@ -72,15 +84,23 @@ body {
     100% {opacity: 1; transform: translateX(0vw);}
 }
 
+@keyframes fadeRightMain {
+    0% {opacity: 0; transform: translateX(50vw);}
+    50% {opacity: 0;}
+    100% {opacity: 1; transform: translateX(0vw);}
+}
+
 .ae-logo__front {
     @extend %flex-center;
     position: relative;
     animation: logoPageClose 8s cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
+    animation-iteration-count: 1;
 
     &--enter {
         @extend %position-center;
         animation: logoEnter 6s forwards;
         width: clamp(250px, 150vw, 1000px);
+        animation-iteration-count: 1;
     }
 
     &--text {
@@ -89,6 +109,7 @@ body {
         opacity: 0;
         color: white;
         animation: textEnter 6s forwards;
+        animation-iteration-count: 1;
     }
 }
 
@@ -98,6 +119,37 @@ body {
     height: 15vh;
     z-index: 10;
     animation: fadeIn 8s ease-in forwards;
+    animation-iteration-count: 1;
+
+    &__anchor-links {
+        text-decoration: none;
+        color:white;
+        font-family: 'Source Code Pro', sans-serif;
+
+        &:visited, &:focus {
+            color:white;
+        }
+
+        &:hover {
+            color: aqua;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    }
+
+    &--intro {
+        @extend %flex-center;
+        position: relative;
+        height: 15vh;
+        z-index: 10;
+    }
+
+    &--contact {
+        @extend %flex-center;
+        position: relative;
+        height: 15vh;
+        z-index: 10;
+    }
 
     &__front {
         @extend %flex-center;
@@ -150,7 +202,7 @@ body {
 
             li {
                 margin: 0 clamp(10px, 2vw, 20px);
-                font-family: 'Source Code Pro';
+                font-family: 'Source Code Pro', sans-serif;
                 overflow: hidden;
 
                 @include tablet {
@@ -169,11 +221,6 @@ body {
                     }
                 }
 
-                &:hover {
-                    color: aqua;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                }
             }
         }
     }
@@ -195,6 +242,16 @@ body {
         opacity: 0.5;
         animation: fadeIn 8.5s ease-in forwards;
 
+        &--main {
+            background: linear-gradient(black 0%, rgba(171, 80, 0, 0.708) 50%, black 100%);
+            position: relative;
+            @extend %flex-center;
+            width: 100%;
+            height: 85%;
+            opacity: 0.5;
+            animation: fadeInMain 1s ease-in forwards;
+        }
+
 
         &__logo-img {
             @extend %position-center;
@@ -204,6 +261,7 @@ body {
 
         &__paragraph {
             @extend %flex-column;
+            text-shadow: none;
         }
 
         &__greeting {
@@ -211,8 +269,19 @@ body {
             font-family: 'Roboto';
             margin: 1vw;
             color: white;
+            text-shadow: none;
             font-size: clamp(26px, 8vw, 56px);
             animation: fadeLeft 9s ease-in-out forwards;
+
+            &--main {
+                @extend %flex-center;
+                font-family: 'Roboto';
+                margin: 1vw;
+                color: white;
+                text-shadow: none;
+                font-size: clamp(26px, 8vw, 56px);
+                animation: fadeLeftMain 1.5s ease-in-out forwards;
+            }
         
             &-2 {
                 @extend %flex-center;
@@ -225,6 +294,19 @@ body {
                 font-size: clamp(14px, 4vw, 28px);
                 text-align: center;
                 animation: fadeRight 9s ease-in-out forwards;
+
+                &--main {
+                    @extend %flex-center;
+                    font-family: 'Roboto';
+                    // margin: 1vw;
+                    line-height: 6vw;
+                    color: white;
+                    width: 80vw;
+                    max-width: 590px;
+                    font-size: clamp(14px, 4vw, 28px);
+                    text-align: center;
+                    animation: fadeRightMain 1.5s ease-in-out forwards;
+                }
 
                 @include desktop {
                     line-height: 46px;
@@ -252,8 +334,8 @@ body {
         &__greeting {
             @extend %flex-center;
             @extend %position-center;
-            color: white;
-            font-size: 40px;
+            font-size: clamp(4rem, 12vw, 10rem);
+            cursor: pointer;
         }
 
     }
@@ -274,8 +356,8 @@ body {
 
         &__greeting {
             @extend %flex-center;
-            color: white;
-            font-size: 40px;
+            font-size: clamp(2rem, 12vw, 8rem);
+            cursor: pointer;
         }
 
     }
@@ -299,11 +381,29 @@ body {
         
         &__greeting {
             @extend %flex-center;
-            color: white;
-            font-size: 40px;
+            font-size: clamp(2rem, 12vw, 8rem);
+            cursor: pointer;
         }
 
     }
+}
+
+a {
+    text-decoration: none;
+    color: #111;
+
+    &:visited, &:focus {
+        color: #111;
+    }
+}
+
+h1 {
+    color: #111;
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 1),
+		0 0 10px rgba(255, 255, 255, 1),
+		0 0 20px rgba(255, 255, 255, 1),
+		0 0 30px rgba(255, 255, 255, 1);
 }
 
 .titles {
@@ -333,7 +433,7 @@ body {
     display: block;
     background-color: #fff;
     position: absolute;
-    height: 4px;
+    height: 6px;
     width: 20px;
     transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
     border-radius: 2px;
@@ -343,14 +443,11 @@ body {
         right: 0%;
         background-color: #fff;
         position: absolute;
-        height: 4px;
+        height: 6px;
         width: 30px;
         transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
         border-radius: 2px;
     }
-
-
-
   }
   
   .menu-button::before {

@@ -1,4 +1,4 @@
-.ae-logo__front, .navbar, .navbar__front, .navbar__front--brand, .navbar__front--img, .navbar__front--links, .container .intro, .container .intro__greeting, .container .intro__greeting-2, .container .about, .container .about__greeting, .container .portfolio, .container .portfolio__greeting, .container .contact, .container .contact__greeting {
+.ae-logo__front, .navbar, .navbar--intro, .navbar--contact, .navbar__front, .navbar__front--brand, .navbar__front--img, .navbar__front--links, .container .intro, .container .intro--main, .container .intro__greeting, .container .intro__greeting--main, .container .intro__greeting-2, .container .intro__greeting-2--main, .container .about, .container .about__greeting, .container .portfolio, .container .portfolio__greeting, .container .contact, .container .contact__greeting {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -200,6 +200,24 @@ body {
   }
 }
 
+@-webkit-keyframes fadeInMain {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInMain {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @-webkit-keyframes fadeLeft {
   0% {
     opacity: 0;
@@ -229,6 +247,38 @@ body {
             transform: translateX(-50vw);
   }
   90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+  }
+}
+
+@-webkit-keyframes fadeLeftMain {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-50vw);
+            transform: translateX(-50vw);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+  }
+}
+
+@keyframes fadeLeftMain {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-50vw);
+            transform: translateX(-50vw);
+  }
+  50% {
     opacity: 0;
   }
   100% {
@@ -276,16 +326,52 @@ body {
   }
 }
 
+@-webkit-keyframes fadeRightMain {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(50vw);
+            transform: translateX(50vw);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+  }
+}
+
+@keyframes fadeRightMain {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(50vw);
+            transform: translateX(50vw);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+  }
+}
+
 .ae-logo__front {
   position: relative;
   -webkit-animation: logoPageClose 8s cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
           animation: logoPageClose 8s cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
 
 .ae-logo__front--enter {
   -webkit-animation: logoEnter 6s forwards;
           animation: logoEnter 6s forwards;
   width: clamp(250px, 150vw, 1000px);
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
 
 .ae-logo__front--text {
@@ -294,6 +380,8 @@ body {
   color: white;
   -webkit-animation: textEnter 6s forwards;
           animation: textEnter 6s forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
 
 .navbar {
@@ -302,6 +390,37 @@ body {
   z-index: 10;
   -webkit-animation: fadeIn 8s ease-in forwards;
           animation: fadeIn 8s ease-in forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+.navbar__anchor-links {
+  text-decoration: none;
+  color: white;
+  font-family: 'Source Code Pro', sans-serif;
+}
+
+.navbar__anchor-links:visited, .navbar__anchor-links:focus {
+  color: white;
+}
+
+.navbar__anchor-links:hover {
+  color: aqua;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.navbar--intro {
+  position: relative;
+  height: 15vh;
+  z-index: 10;
+}
+
+.navbar--contact {
+  position: relative;
+  height: 15vh;
+  z-index: 10;
 }
 
 .navbar__front {
@@ -362,7 +481,7 @@ body {
 
 .navbar__front--links li {
   margin: 0 clamp(10px, 2vw, 20px);
-  font-family: 'Source Code Pro';
+  font-family: 'Source Code Pro', sans-serif;
   overflow: hidden;
 }
 
@@ -388,13 +507,6 @@ body {
   }
 }
 
-.navbar__front--links li:hover {
-  color: aqua;
-  cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
 .container {
   position: relative;
   width: 100%;
@@ -413,18 +525,44 @@ body {
           animation: fadeIn 8.5s ease-in forwards;
 }
 
+.container .intro--main {
+  background: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(50%, rgba(171, 80, 0, 0.708)), to(black));
+  background: linear-gradient(black 0%, rgba(171, 80, 0, 0.708) 50%, black 100%);
+  position: relative;
+  width: 100%;
+  height: 85%;
+  opacity: 0.5;
+  -webkit-animation: fadeInMain 1s ease-in forwards;
+          animation: fadeInMain 1s ease-in forwards;
+}
+
 .container .intro__logo-img {
   opacity: 0.5;
   width: clamp(250px, 100vw, 600px);
+}
+
+.container .intro__paragraph {
+  text-shadow: none;
 }
 
 .container .intro__greeting {
   font-family: 'Roboto';
   margin: 1vw;
   color: white;
+  text-shadow: none;
   font-size: clamp(26px, 8vw, 56px);
   -webkit-animation: fadeLeft 9s ease-in-out forwards;
           animation: fadeLeft 9s ease-in-out forwards;
+}
+
+.container .intro__greeting--main {
+  font-family: 'Roboto';
+  margin: 1vw;
+  color: white;
+  text-shadow: none;
+  font-size: clamp(26px, 8vw, 56px);
+  -webkit-animation: fadeLeftMain 1.5s ease-in-out forwards;
+          animation: fadeLeftMain 1.5s ease-in-out forwards;
 }
 
 .container .intro__greeting-2 {
@@ -437,6 +575,18 @@ body {
   text-align: center;
   -webkit-animation: fadeRight 9s ease-in-out forwards;
           animation: fadeRight 9s ease-in-out forwards;
+}
+
+.container .intro__greeting-2--main {
+  font-family: 'Roboto';
+  line-height: 6vw;
+  color: white;
+  width: 80vw;
+  max-width: 590px;
+  font-size: clamp(14px, 4vw, 28px);
+  text-align: center;
+  -webkit-animation: fadeRightMain 1.5s ease-in-out forwards;
+          animation: fadeRightMain 1.5s ease-in-out forwards;
 }
 
 @media screen and (min-width: 750px) {
@@ -461,8 +611,8 @@ body {
 }
 
 .container .about__greeting {
-  color: white;
-  font-size: 40px;
+  font-size: clamp(4rem, 12vw, 10rem);
+  cursor: pointer;
 }
 
 .container .portfolio {
@@ -480,8 +630,8 @@ body {
 }
 
 .container .portfolio__greeting {
-  color: white;
-  font-size: 40px;
+  font-size: clamp(2rem, 12vw, 8rem);
+  cursor: pointer;
 }
 
 .container .contact {
@@ -503,8 +653,22 @@ body {
 }
 
 .container .contact__greeting {
-  color: white;
-  font-size: 40px;
+  font-size: clamp(2rem, 12vw, 8rem);
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #111;
+}
+
+a:visited, a:focus {
+  color: #111;
+}
+
+h1 {
+  color: #111;
+  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px white, 0 0 30px white;
 }
 
 .titles {
@@ -542,7 +706,7 @@ body {
   display: block;
   background-color: #fff;
   position: absolute;
-  height: 4px;
+  height: 6px;
   width: 20px;
   -webkit-transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
   transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
@@ -556,7 +720,7 @@ body {
   right: 0%;
   background-color: #fff;
   position: absolute;
-  height: 4px;
+  height: 6px;
   width: 30px;
   -webkit-transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
   transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
