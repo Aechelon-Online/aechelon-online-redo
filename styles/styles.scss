@@ -94,13 +94,13 @@ body {
     @extend %flex-center;
     position: relative;
     animation: logoPageClose 8s cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
-    animation-iteration-count: 1;
+    
 
     &--enter {
         @extend %position-center;
         animation: logoEnter 6s forwards;
         width: clamp(250px, 150vw, 1000px);
-        animation-iteration-count: 1;
+       
     }
 
     &--text {
@@ -109,7 +109,7 @@ body {
         opacity: 0;
         color: white;
         animation: textEnter 6s forwards;
-        animation-iteration-count: 1;
+        
     }
 }
 
@@ -171,6 +171,11 @@ body {
 
             &-logo {
                 width: clamp(6vh, 15vw, 14vh);
+
+                &-2 {
+                    width: clamp(6vh, 15vw, 14vh);
+                    padding-top: 4px;
+                }
             }
         }
 
@@ -286,7 +291,6 @@ body {
             &-2 {
                 @extend %flex-center;
                 font-family: 'Roboto';
-                // margin: 1vw;
                 line-height: 6vw;
                 color: white;
                 width: 80vw;
@@ -298,7 +302,6 @@ body {
                 &--main {
                     @extend %flex-center;
                     font-family: 'Roboto';
-                    // margin: 1vw;
                     line-height: 6vw;
                     color: white;
                     width: 80vw;
@@ -306,6 +309,11 @@ body {
                     font-size: clamp(14px, 4vw, 28px);
                     text-align: center;
                     animation: fadeRightMain 1.5s ease-in-out forwards;
+
+                    @include desktop {
+                        line-height: 46px;
+                        max-width: 590px;
+                    }
                 }
 
                 @include desktop {
@@ -317,7 +325,7 @@ body {
         }
     }
 
-    .about {
+    .about, .about-page {
         background: linear-gradient(black 0%, rgba(0, 63, 171, 0.708) 50%, black 100%);
         position: relative;
         @extend %flex-center;
@@ -338,6 +346,53 @@ body {
             cursor: pointer;
         }
 
+        &__grid--bio {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 5vw repeat(3, 1fr) 5vw;
+            grid-template-rows: 25vw 10vh 20vh 30vh 1fr;
+            justify-items: center;
+
+            &-headshot {
+                border: 10px solid transparent;
+                outline: 5px solid rgba(242, 105, 0, 0.906);
+                border-radius: 5px;
+                width: clamp(250px, 60vw, 600px);
+                grid-column: 2 / 4;
+                grid-row: 1 / 3;
+                margin-top: 5vh;
+
+                @include small-tablet {
+                    grid-column: 2 / 10;
+                    grid-row: 2 / 10;
+                }
+            }
+
+            &-description {
+                background-color: rgba(17, 17, 17, 0.461);
+                border: 10px solid transparent;
+                outline: 5px solid rgba(242, 105, 0, 0.906);
+                width: clamp(250px, 60vw, 600px);
+                color: white;
+                grid-column: 3 / 5;
+                grid-row: 3 / 5;
+                font-size: clamp(1rem, 4vw, 2rem);
+                text-align: justify;
+                align-self: flex-start;
+
+                @include small-tablet {
+                    grid-column: 4 / 10;
+                    grid-row: 6 / 10;
+                }
+            }
+
+            @include small-tablet {
+                grid-template-rows: repeat(12, 1fr);
+                grid-template-columns: repeat(12, 1fr);
+            }
+        }
     }
 
     .portfolio {
