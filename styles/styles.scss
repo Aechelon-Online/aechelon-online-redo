@@ -329,6 +329,7 @@ body {
         background: linear-gradient(black 0%, rgba(0, 63, 171, 0.708) 50%, black 100%);
         position: relative;
         @extend %flex-center;
+        overflow-x: hidden;
 
         &__headshot-img {
             
@@ -351,47 +352,46 @@ body {
             height: 100%;
             width: 100%;
             display: grid;
-            grid-template-columns: 5vw repeat(3, 1fr) 5vw;
-            grid-template-rows: 25vw 10vh 20vh 30vh 1fr;
+            grid-template-rows: repeat(12, 10vh) 10px;
+            grid-template-columns: repeat(12, 1fr);
             justify-items: center;
+
+            @include tablet {
+                grid-template-rows: repeat(12, 9vw);
+            }
+
+            
+            
 
             &-headshot {
                 border: 10px solid transparent;
                 outline: 5px solid rgba(242, 105, 0, 0.906);
                 border-radius: 5px;
-                width: clamp(250px, 60vw, 600px);
-                grid-column: 2 / 4;
-                grid-row: 1 / 3;
+                width: clamp(250px, 75vw, 600px);
+                grid-column: 2 / 10;
+                grid-row: 1 / 8;
                 margin-top: 5vh;
-
-                @include small-tablet {
-                    grid-column: 2 / 10;
-                    grid-row: 2 / 10;
-                }
             }
 
             &-description {
                 background-color: rgba(17, 17, 17, 0.461);
-                border: 10px solid transparent;
-                outline: 5px solid rgba(242, 105, 0, 0.906);
-                width: clamp(250px, 60vw, 600px);
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 50px;
+                border: 5px solid rgba(242, 105, 0, 0.906);
+                height: fit-content;
                 color: white;
-                grid-column: 3 / 5;
-                grid-row: 3 / 5;
-                font-size: clamp(1rem, 4vw, 2rem);
+                grid-column: 5 / 12;
+                grid-row-start: 6;
+                font-size: clamp(0.8rem, 3.5vw, 1.5rem);
                 text-align: justify;
-                align-self: flex-start;
-
+                justify-self: start;
+                
                 @include small-tablet {
-                    grid-column: 4 / 10;
-                    grid-row: 6 / 10;
+                    grid-row-start: 7;
                 }
             }
 
-            @include small-tablet {
-                grid-template-rows: repeat(12, 1fr);
-                grid-template-columns: repeat(12, 1fr);
-            }
         }
     }
 
