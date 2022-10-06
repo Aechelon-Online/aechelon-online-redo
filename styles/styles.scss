@@ -1,6 +1,24 @@
 @import 'colors';
 @import 'media-queries';
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+body {
+    background: $black;
+    height: 100vh;
+}
+
+// Variables
+
+$time-run: 2s;
+
+// Extends
+
 %flex-center {
     display: flex;
     justify-content: center;
@@ -19,18 +37,7 @@
     display: flex;
 }
 
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial;
-}
-
-body {
-    background: $black;
-    height: 100vh;
-}
+// Keyframes
 
 @keyframes logoEnter {
     0% {opacity: 0;}
@@ -60,7 +67,6 @@ body {
 
 @keyframes fadeInMain {
     0% {opacity: 0;}
-    // 92% {opacity: 0;}
     100% {opacity: 1;}
 }
 
@@ -93,12 +99,12 @@ body {
 .ae-logo__front {
     @extend %flex-center;
     position: relative;
-    animation: logoPageClose 8s cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
+    animation: logoPageClose ($time-run +1s) cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
     
 
     &--enter {
         @extend %position-center;
-        animation: logoEnter 6s forwards;
+        animation: logoEnter $time-run forwards;
         width: clamp(250px, 150vw, 1000px);
        
     }
@@ -108,17 +114,18 @@ body {
         font-size: 8vw;
         opacity: 0;
         color: white;
-        animation: textEnter 6s forwards;
+        animation: textEnter $time-run forwards;
         
     }
 }
 
 .navbar {
     @extend %flex-center;
-    position: relative;
+    position: absolute;
+    width: 100%;
     height: 15vh;
     z-index: 10;
-    animation: fadeIn 8s ease-in forwards;
+    animation: fadeIn ($time-run + 1s) ease-in forwards;
     animation-iteration-count: 1;
 
     &__anchor-links {
@@ -139,7 +146,8 @@ body {
 
     &--intro {
         @extend %flex-center;
-        position: relative;
+        position: absolute;
+        width: 100%;
         height: 15vh;
         z-index: 10;
     }
@@ -243,16 +251,16 @@ body {
         position: relative;
         @extend %flex-center;
         width: 100%;
-        height: 85%;
+        height: 100%;
         opacity: 0.5;
-        animation: fadeIn 8.5s ease-in forwards;
+        animation: fadeIn $time-run ease-in forwards;
 
         &--main {
             background: linear-gradient(black 0%, rgba(171, 80, 0, 0.708) 50%, black 100%);
             position: relative;
             @extend %flex-center;
             width: 100%;
-            height: 85%;
+            height: 100%;
             opacity: 0.5;
             animation: fadeInMain 1s ease-in forwards;
         }
@@ -276,7 +284,7 @@ body {
             color: white;
             text-shadow: none;
             font-size: clamp(26px, 8vw, 56px);
-            animation: fadeLeft 9s ease-in-out forwards;
+            animation: fadeLeft $time-run ease-in-out forwards;
 
             &--main {
                 @extend %flex-center;
@@ -297,7 +305,7 @@ body {
                 max-width: 590px;
                 font-size: clamp(14px, 4vw, 28px);
                 text-align: center;
-                animation: fadeRight 9s ease-in-out forwards;
+                animation: fadeRight $time-run ease-in-out forwards;
 
                 &--main {
                     @extend %flex-center;
@@ -427,8 +435,7 @@ body {
 
     .techstack-page__flexbox {
         
-        display: flex;
-        justify-content: center;
+        @extend %flex-center;
         width: 96%;
         height: 70%;
 
@@ -561,8 +568,8 @@ body {
 
 
             @include med-screen {
-                width: clamp(250px, 90vw, 800px);
-                height: clamp(150px, 35vw, 350px);
+                width: clamp(250px, 90vw, 550px);
+                height: clamp(150px, 35vh, 350px);
             }
 
             &:before {
