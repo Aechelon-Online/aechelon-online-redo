@@ -138,7 +138,7 @@ body {
   0% {
     opacity: 0;
   }
-  92% {
+  80% {
     opacity: 0;
   }
   100% {
@@ -149,7 +149,7 @@ body {
   0% {
     opacity: 0;
   }
-  92% {
+  80% {
     opacity: 0;
   }
   100% {
@@ -176,11 +176,11 @@ body {
   0% {
     opacity: 0;
   }
-  70% {
+  50% {
     opacity: 0;
     transform: translateX(-50vw);
   }
-  90% {
+  80% {
     opacity: 0;
   }
   100% {
@@ -192,11 +192,11 @@ body {
   0% {
     opacity: 0;
   }
-  70% {
+  50% {
     opacity: 0;
     transform: translateX(-50vw);
   }
-  90% {
+  80% {
     opacity: 0;
   }
   100% {
@@ -234,11 +234,11 @@ body {
   0% {
     opacity: 0;
   }
-  70% {
+  50% {
     opacity: 0;
     transform: translateX(50vw);
   }
-  90% {
+  80% {
     opacity: 0;
   }
   100% {
@@ -250,11 +250,11 @@ body {
   0% {
     opacity: 0;
   }
-  70% {
+  50% {
     opacity: 0;
     transform: translateX(50vw);
   }
-  90% {
+  80% {
     opacity: 0;
   }
   100% {
@@ -288,6 +288,26 @@ body {
     transform: translateX(0vw);
   }
 }
+@-webkit-keyframes moveUp {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes moveUp {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .ae-logo__front {
   position: relative;
   -webkit-animation: logoPageClose 3s cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
@@ -311,8 +331,8 @@ body {
   width: 100%;
   height: 15vh;
   z-index: 10;
-  -webkit-animation: fadeIn 3s ease-in forwards;
-          animation: fadeIn 3s ease-in forwards;
+  -webkit-animation: fadeIn 3.5s ease-in forwards;
+          animation: fadeIn 3.5s ease-in forwards;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
 }
@@ -416,8 +436,8 @@ body {
   width: 100%;
   height: 100%;
   opacity: 0.5;
-  -webkit-animation: fadeIn 2s ease-in forwards;
-          animation: fadeIn 2s ease-in forwards;
+  -webkit-animation: fadeIn 3.6s ease-in forwards;
+          animation: fadeIn 3.6s ease-in forwards;
 }
 .container .intro--main {
   background: linear-gradient(black 0%, rgba(171, 80, 0, 0.708) 50%, black 100%);
@@ -441,8 +461,8 @@ body {
   color: white;
   text-shadow: none;
   font-size: clamp(26px, 8vw, 56px);
-  -webkit-animation: fadeLeft 2s ease-in-out forwards;
-          animation: fadeLeft 2s ease-in-out forwards;
+  -webkit-animation: fadeLeft 4.5s ease-in-out forwards;
+          animation: fadeLeft 4.5s ease-in-out forwards;
 }
 .container .intro__greeting--main {
   font-family: "Roboto";
@@ -461,8 +481,8 @@ body {
   max-width: 590px;
   font-size: clamp(14px, 4vw, 28px);
   text-align: center;
-  -webkit-animation: fadeRight 2s ease-in-out forwards;
-          animation: fadeRight 2s ease-in-out forwards;
+  -webkit-animation: fadeRight 4.5s ease-in-out forwards;
+          animation: fadeRight 4.5s ease-in-out forwards;
 }
 .container .intro__greeting-2--main {
   font-family: "Roboto";
@@ -508,7 +528,7 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: repeat(12, 80px);
+  grid-template-rows: repeat(12, 70px);
   grid-template-columns: repeat(12, 1fr);
   justify-items: center;
 }
@@ -518,33 +538,72 @@ body {
   }
 }
 .container .about__grid--bio-headshot, .container .about-page__grid--bio-headshot {
-  border: 10px solid transparent;
-  outline: 5px solid rgba(242, 105, 0, 0.906);
-  border-radius: 5px;
+  opacity: 0.7;
   width: clamp(250px, 75vw, 600px);
+  height: clamp(200px, 75vw, 600px);
   grid-column: 2/10;
   grid-row: 1/8;
   margin-top: 5vh;
 }
+.container .about__grid--bio-headshot-pic, .container .about-page__grid--bio-headshot-pic {
+  background: url("../img/acs-website-headshot.png");
+  width: 100%;
+  height: 75%;
+  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.99);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  position: relative;
+}
+.container .about__grid--bio-headshot-pic__layer, .container .about-page__grid--bio-headshot-pic__layer {
+  background-color: rgba(0, 63, 171, 0.708);
+  opacity: 0.15;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
 .container .about__grid--bio-description, .container .about-page__grid--bio-description {
-  background-color: rgba(17, 17, 17, 0.461);
+  background-color: rgba(17, 17, 17, 0);
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 50px;
-  border: 5px solid rgba(242, 105, 0, 0.906);
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   color: white;
-  grid-column: 5/12;
+  grid-column: 4/12;
   grid-row-start: 6;
   font-size: clamp(0.8rem, 3.5vw, 1.5rem);
   text-align: justify;
   justify-self: start;
+  align-self: start;
+  z-index: 1;
+  text-shadow: 1px 1px 2px black;
+}
+.container .about__grid--bio-description p, .container .about-page__grid--bio-description p {
+  opacity: 0;
+  padding: 5px;
+}
+.container .about__grid--bio-description p:nth-child(1), .container .about-page__grid--bio-description p:nth-child(1) {
+  -webkit-animation: moveUp 0.8s ease-in forwards;
+          animation: moveUp 0.8s ease-in forwards;
+}
+.container .about__grid--bio-description p:nth-child(2), .container .about-page__grid--bio-description p:nth-child(2) {
+  -webkit-animation: moveUp 0.8s ease-in forwards;
+          animation: moveUp 0.8s ease-in forwards;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+.container .about__grid--bio-description p:nth-child(3), .container .about-page__grid--bio-description p:nth-child(3) {
+  -webkit-animation: moveUp 0.8s ease-in forwards;
+          animation: moveUp 0.8s ease-in forwards;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
 }
 @media screen and (max-width: 500px) {
   .container .about__grid--bio-description, .container .about-page__grid--bio-description {
-    grid-row-start: 7;
+    grid-row-start: 6;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -712,7 +771,7 @@ body {
   background: linear-gradient(black 0%, rgba(0, 160, 171, 0.708) 50%, black 100%);
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  height: 80vh;
 }
 .container .contact__handshake-img {
   background-size: cover;
@@ -725,6 +784,20 @@ body {
 .container .contact__greeting {
   font-size: clamp(2rem, 12vw, 8rem);
   cursor: pointer;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80%;
+  color: white;
+}
+.contact-info a, .contact-info p {
+  color: white;
+  font-size: clamp(1.5rem, 5vw, 4rem);
+  padding: 5px;
 }
 
 a {

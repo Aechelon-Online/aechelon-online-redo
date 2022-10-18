@@ -5,7 +5,7 @@ const observer = new IntersectionObserver(entries => {
         entry.target.classList.toggle("show", entry.isIntersecting)
     })
 }, {
-    rootMargin: "-100px",
+    rootMargin: "-125px",
 })
 
 titles.forEach(title => {

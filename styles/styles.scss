@@ -61,7 +61,7 @@ $time-run: 2s;
 
 @keyframes fadeIn {
     0% {opacity: 0;}
-    92% {opacity: 0;}
+    80% {opacity: 0;}
     100% {opacity: 1;}
 }
 
@@ -72,8 +72,8 @@ $time-run: 2s;
 
 @keyframes fadeLeft {
     0% {opacity: 0;}
-    70% {opacity: 0; transform: translateX(-50vw);}
-    90% {opacity: 0;}
+    50% {opacity: 0; transform: translateX(-50vw);}
+    80% {opacity: 0;}
     100% {opacity: 1; transform: translateX(0vw);}
 }
 
@@ -85,8 +85,8 @@ $time-run: 2s;
 
 @keyframes fadeRight {
     0% {opacity: 0;}
-    70% {opacity: 0; transform: translateX(50vw);}
-    90% {opacity: 0;}
+    50% {opacity: 0; transform: translateX(50vw);}
+    80% {opacity: 0;}
     100% {opacity: 1; transform: translateX(0vw);}
 }
 
@@ -96,10 +96,15 @@ $time-run: 2s;
     100% {opacity: 1; transform: translateX(0vw);}
 }
 
+@keyframes moveUp {
+    0% {opacity: 0; transform: scale(1.1);}
+    100% {opacity: 1; transform: scale(1);}
+}
+
 .ae-logo__front {
     @extend %flex-center;
     position: relative;
-    animation: logoPageClose ($time-run +1s) cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
+    animation: logoPageClose ($time-run + 1s) cubic-bezier(0, 0.8, 0.14, 0.94) forwards;
     
 
     &--enter {
@@ -125,7 +130,7 @@ $time-run: 2s;
     width: 100%;
     height: 15vh;
     z-index: 10;
-    animation: fadeIn ($time-run + 1s) ease-in forwards;
+    animation: fadeIn ($time-run + 1.5s) ease-in forwards;
     animation-iteration-count: 1;
 
     &__anchor-links {
@@ -253,7 +258,7 @@ $time-run: 2s;
         width: 100%;
         height: 100%;
         opacity: 0.5;
-        animation: fadeIn $time-run ease-in forwards;
+        animation: fadeIn ($time-run + 1.6s) ease-in forwards;
 
         &--main {
             background: linear-gradient(black 0%, rgba(171, 80, 0, 0.708) 50%, black 100%);
@@ -284,7 +289,7 @@ $time-run: 2s;
             color: white;
             text-shadow: none;
             font-size: clamp(26px, 8vw, 56px);
-            animation: fadeLeft $time-run ease-in-out forwards;
+            animation: fadeLeft ($time-run + 2.5s) ease-in-out forwards;
 
             &--main {
                 @extend %flex-center;
@@ -305,7 +310,7 @@ $time-run: 2s;
                 max-width: 590px;
                 font-size: clamp(14px, 4vw, 28px);
                 text-align: center;
-                animation: fadeRight $time-run ease-in-out forwards;
+                animation: fadeRight ($time-run + 2.5s) ease-in-out forwards;
 
                 &--main {
                     @extend %flex-center;
@@ -360,7 +365,7 @@ $time-run: 2s;
             height: 100%;
             width: 100%;
             display: grid;
-            grid-template-rows: repeat(12, 80px);
+            grid-template-rows: repeat(12, 70px);
             grid-template-columns: repeat(12, 1fr);
             justify-items: center;
 
@@ -370,31 +375,68 @@ $time-run: 2s;
 
         
             &-headshot {
-                border: 10px solid transparent;
-                outline: 5px solid rgba(242, 105, 0, 0.906);
-                border-radius: 5px;
+                opacity: 0.7;
                 width: clamp(250px, 75vw, 600px);
+                height: clamp(200px, 75vw, 600px);
                 grid-column: 2 / 10;
                 grid-row: 1 / 8;
                 margin-top: 5vh;
+
+                &-pic {
+                    background: url("../img/acs-website-headshot.png");
+                    width: 100%;
+                    height: 75%;
+                    box-shadow: inset 0 0 10px 10px rgba(0,0,0,0.99);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 100%;
+                    position: relative;
+
+                    &__layer {
+                        background-color: rgba(0, 63, 171, 0.708);
+                        opacity: 0.15;
+                        position: absolute;
+                        z-index: 10;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
             }
 
             &-description {
-                background-color: rgba(17, 17, 17, 0.461);
+                background-color: rgba(17, 17, 17, 0);
                 border-radius: 5px;
                 padding: 10px;
                 margin-bottom: 50px;
-                border: 5px solid rgba(242, 105, 0, 0.906);
                 height: fit-content;
                 color: white;
-                grid-column: 5 / 12;
+                grid-column: 4 / 12;
                 grid-row-start: 6;
                 font-size: clamp(0.8rem, 3.5vw, 1.5rem);
                 text-align: justify;
                 justify-self: start;
+                align-self: start;
+                z-index: 1;
+                text-shadow: 1px 1px 2px black;
+
+                & p {
+                    opacity: 0;
+                    padding: 5px;
+                }
+                & p:nth-child(1) {
+                    animation: moveUp 0.8s ease-in forwards;
+                }
+                & p:nth-child(2) {
+                    animation: moveUp 0.8s ease-in forwards;
+                    animation-delay: 2s;
+                }
+                & p:nth-child(3) {
+                    animation: moveUp 0.8s ease-in forwards;
+                    animation-delay: 4s;
+                }
                 
                 @include small-tablet {
-                    grid-row-start: 7;
+                    grid-row-start: 6;
                 }
                 @include desktop {
                     width: 800px;
@@ -592,7 +634,7 @@ $time-run: 2s;
         position: relative;
         @extend %flex-center;
         overflow: hidden;
-        height: 100vh;
+        height: 80vh;
 
         &__handshake-img {
             @extend %position-center;
@@ -612,6 +654,22 @@ $time-run: 2s;
 
     }
 }
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+    color: white;
+
+    & a, & p {
+        color: white;
+        font-size: clamp(1.5rem, 5vw, 4rem);
+        padding: 5px; 
+    }
+}
+
 
 a {
     text-decoration: none;
